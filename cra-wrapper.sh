@@ -10,13 +10,13 @@ npm install --save-dev prettier eslint;
 popd;
 
 echo "Copying eslint config file to '$1'";
-cp ./.eslintrc.json ./$1/.eslintrc.json;
+cp ~/github/cra-wrapper/.eslintrc.json ./$1/.eslintrc.json;
 
 echo "Copying Prettier config file to '$1'";
-cp ./.prettierrc.json ./$1/.prettierrc.json;
+cp ~/github/cra-wrapper/.prettierrc.json ./$1/.prettierrc.json;
 
 echo "Adding custom scripts to package.json";
-node ./addScriptsToPackageJson.js $1;
+node ~/github/cra-wrapper/addScriptsToPackageJson.js $1;
 
 echo "Removing unwanted files from 'src' directory";
 
@@ -50,12 +50,18 @@ describe('App', () => {
 });" >> ./components/__tests__/App.test.js
 
 echo "Modifying index.js to account for previous changes"
+# remove index.css
 sed -i "s_import './index.css';__g" ./index.js
+# Change App.js import
 sed -i "s_import App from './App'_import App from './components/App'_g" ./index.js
+# remove service worker import
 sed -i "s_import \* as serviceWorker from './serviceWorker';__g" ./index.js
+# remove all comments
 sed -i "s_// .*__g" ./index.js
+# remove service worker call
 sed -i "s_serviceWorker.unregister();__g" ./index.js
 
+# verify that all changes work as expected
 npm run test -- --watchAll=false;
 npm run prettify && npm run lintify;
 
