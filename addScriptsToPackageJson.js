@@ -15,8 +15,8 @@ console.log('Original scripts section: ', packageJson.scripts, '\n\n');
 const newScriptsSection = {
   ...packageJson.scripts,
   test: "react-scripts test --colors",
-  prettify: "prettier --config package.json --ignore-path .prettierignore --write \"src/**/*.js\"",
-  checkPrettier: "prettier --ignore-path .prettierignore --check \"src/**/*.js\"",
+  prettify: "prettier --config .prettierrc.json --ignore-path .prettierignore --write \"src/**/*.js\"",
+  checkPrettier: "prettier --config .prettierrc.json --ignore-path .prettierignore --check \"src/**/*.js\"",
   lint: "node_modules/.bin/eslint --color --ext js,jsx ./src",
   lintify: "node_modules/.bin/eslint --color --fix --ext js,jsx ./src",
   fix: "npm run prettify && npm run lintify && npm run sniff",

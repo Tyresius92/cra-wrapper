@@ -4,8 +4,9 @@ npx create-react-app $1;
 echo "Changing into directory '$1'";
 pushd $1;
 
-echo "Installing Prettier and eslint in project '$1'";
-npm install --save-dev prettier eslint;
+# Don't need to install eslint because it comes with CRA
+echo "Installing Prettier in project '$1'";
+npm install --save-dev prettier;
 
 popd;
 
