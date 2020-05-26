@@ -24,7 +24,7 @@ echo "Removing unwanted files from 'src' directory";
 pushd ./$1/src;
 
 shopt -s extglob
-rm -v !("index.js"|"setupTests.js");
+rm -v !("index.js"|"index.css"|"setupTests.js");
 
 echo "Relocating and re-initializing App.js";
 mkdir ./components;
@@ -52,7 +52,7 @@ describe('App', () => {
 
 echo "Modifying index.js to account for previous changes"
 # remove index.css
-sed -i "s_import './index.css';__g" ./index.js
+# sed -i "s_import './index.css';__g" ./index.js
 # Change App.js import
 sed -i "s_import App from './App'_import App from './components/App'_g" ./index.js
 # remove service worker import
