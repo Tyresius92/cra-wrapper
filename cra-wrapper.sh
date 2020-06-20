@@ -16,6 +16,10 @@ cp ~/github/cra-wrapper/.eslintrc.json ./$1/.eslintrc.json;
 echo "Copying Prettier config file to '$1'";
 cp ~/github/cra-wrapper/.prettierrc.json ./$1/.prettierrc.json;
 
+echo "Copying color printing script to '$1'";
+mkdir ./$1/scripts;
+cp ~/github/cra-wrapper/echo.js ./$1/scripts/echo.js;
+
 echo "Adding custom scripts to package.json";
 node ~/github/cra-wrapper/addScriptsToPackageJson.js $1;
 
@@ -54,13 +58,13 @@ echo "Modifying index.js to account for previous changes"
 # remove index.css
 # sed -i "s_import './index.css';__g" ./index.js
 # Change App.js import
-sed -i "s_import App from './App'_import App from './components/App'_g" ./index.js
+sed -i '' -e "s_import App from './App'_import App from './components/App'_g" ./index.js
 # remove service worker import
-sed -i "s_import \* as serviceWorker from './serviceWorker';__g" ./index.js
+sed -i '' -e "s_import \* as serviceWorker from './serviceWorker';__g" ./index.js
 # remove all comments
-sed -i "s_// .*__g" ./index.js
+sed -i '' -e "s_// .*__g" ./index.js
 # remove service worker call
-sed -i "s_serviceWorker.unregister();__g" ./index.js
+sed -i '' -e "s_serviceWorker.unregister();__g" ./index.js
 
 # verify that all changes work as expected
 npm run test -- --watchAll=false;

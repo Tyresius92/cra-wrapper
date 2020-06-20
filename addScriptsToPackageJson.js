@@ -20,7 +20,7 @@ const newScriptsSection = {
   lint: "node_modules/.bin/eslint --color --ext js,jsx ./src",
   lintify: "node_modules/.bin/eslint --color --fix --ext js,jsx ./src",
   fix: "npm run prettify && npm run lintify && npm run sniff",
-  smellsGood: "echo Great success!! Your code smells goooood!",
+  smellsGood: "node scripts/echo \"Great success!! Your code smells goooood!\" --font-color 92",
   sniff: "npm run checkPrettier && npm run lint && npm run smellsGood"
 };
 
