@@ -85,13 +85,5 @@
     "no-useless-rename": "error",
     "prefer-arrow-callback": "error",
     "prefer-const": "error"
-  },
-  "overrides": [
-    {
-      "files": ["./src/utils/presetBoardConstants.js"],
-      "rules": {
-        "max-len": "off"
-      }
-    }
-  ]
+  }
 }
