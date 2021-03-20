@@ -24,7 +24,7 @@
   "plugins": ["react"],
   "rules": {
     "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
+    "quotes": ["error", "single", {"avoidEscape": true}],
     "semi": ["error", "always"],
     "array-callback-return": "error",
     "complexity": ["error", 15],
